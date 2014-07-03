@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<!--[if lt IE 9]>
+        <script src="./js/html5shiv.min.js"></script>
+        <script src="./js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+		.container {
+			width: 1170px;
+		}
+		article {
+			margin-bottom: 30px;
+		}
+		article h1 {
+			font-size: 24px;
+			font-family: '微软雅黑','黑体',sans-serif;
+		}
+		.arc{
+			border-top: 1px dashed gray;
+			border-bottom: 1px solid gray;
+			padding-top: 6px;
+			margin-bottom: 4px;
+		}
+		.art_details{
+			margin:15px 0px;
+		}
+    </style>
+</head>
+<body>
+	<!-- SSI静态包含 -->
+	<!--#include virtual="/view/comm/header.html"--> 
+	
+
+
+	<!-- 2.主体 -->
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-9">
+			<?php foreach ($arts as $art) {?>
+				<article>
+					<h1>
+						<a href="<?php echo URL_ROOT;?>/blog_art.php?artid=<?php echo $art['artid'];?>">
+							<?php echo $art['title']; ?>
+						</a>
+					</h1>
+					<div class="arc">
+						<div class="art_details" >
+							发表时间：
+							<a href="#"><?php echo date('Y/m/d',$art['pubtime']);?></a>   
+							&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+							分类：
+							<a href="#"><?php echo $art['catname'];?> </a> 
+							&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+							标签：
+							<a href="#"><?php echo $art['tags'];?> </a>
+							&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+							作者：by 
+							<a href="#"><?php echo $art['nick'];?></a> &nbsp;&nbsp;&nbsp;
+						</div>
+						<!-- <p><?php echo htmlspecialchars($art['content']); ?></p> -->
+						<!-- <p><?php echo $art['content']; ?></p> -->
+						<p><?php echo $art['title']; ?></p>
+						<p><?php echo $art['content']; ?></p>
+						
+					</div>
+					<span class="pull-right">
+						<a 
+							href="<?php echo URL_ROOT;?>/blog_art.php?artid=<?php echo $art['artid'];?>#comms"
+						>
+							<?php echo $art['commcount'];?>条评论&raquo;
+						</a>
+					</span>
+				</article>
+			<?php }?>
+				
+
+			</div>
+
+			<!-- SSI静态包含 -->
+			<?php include_once('/view/comm/left.php');?>
+			<!-- 
+			<div class="col-xs-3">
+				<div class="panel panel-default">
+					<div class="panel-heading">最新博文</div>
+					<div class="panel-body">
+						<ul>
+							is_array($result = xxxxxxxxx)?null:$result = array(); 
+								//$result后的赋值表达式返回的结果是一个有效数组，则正常进行下面代码，
+								//否则给$result变量赋一个空数组值。
+							<?php foreach ($new_arts as $new_art) { ?>
+								<li>
+									<a href="<?php echo URL_ROOT;?>/blog_art.php?artid=<?php echo $new_art['artid'] ;?>">
+										<?php echo $new_art['title']; ?>
+									</a>
+								</li>
+							<?php } ?>
+							<?php echo $new_arts[0]['title'];?>
+						</ul>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">日志分类</div>
+					<div class="panel-body">
+						<ul>
+							<?php foreach ($cats as $cat) { ?>
+								<li>
+									<a href="<?php echo URL_ROOT;?>/blog_art.php?catid=<?php echo $cat['catid'] ;?>">
+										<?php echo $cat['catname']; ?>
+									</a>
+								</li>
+							<?php } ?>
+						</ul>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">Tag标签</div>
+					<div class="panel-body">
+						<ul>
+							<?php foreach ($tags as $tag) { ?>
+								<li>
+									<a href="<?php echo URL_ROOT;?>/blog_art.php?tag=<?php echo $cat['tag'] ;?>">
+										<?php echo $tag['tag']; ?>
+									</a>
+								</li>
+							<?php } ?>
+						</ul>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">友情链接</div>
+					<div class="panel-body">
+						<ul>
+							<li><a href="http://www.baidu.com">百度</a></li>
+							<li><a href="http://www.google.hk">谷歌</a></li>
+							<li><a href="http://jingyan.baidu.com">百度经验</a></li>
+							<li><a href="http://sports.sina.com.cn/nba">NBA</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			 -->
+		</div>
+
+		<div class="well">版权信息www.chuanyuefanhua.com</div>
+	</div>
+	<!-- 3.底部 -->
+	
+	<script src="//libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>	
+	<script src="./js/bootstrap.min.js"></script>	
+	<script src="js/jquery.js"></script>
+ 	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

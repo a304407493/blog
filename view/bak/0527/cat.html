@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<!--[if lt IE 9]>
+        <script src="./js/html5shiv.min.js"></script>
+        <script src="./js/respond.min.js"></script>
+    <![endif]-->
+<style>
+	.container {
+		width: 1170px;
+	}
+	#footer {
+		margin: 20px 0;
+	}
+</style>
+</head>
+<body>
+	<!-- 1.头部 -->
+	<div class="container">
+		<page-header>
+			<!-- 二手诗人 科学家  -->
+			<h1>穿越繁华 <small>人生为棋，我愿为卒，行动虽缓，不曾后退一步。。。</small></h1>
+			<h3>
+				乘风行 无惧
+				<button style="font-size:15px;float:right;" class="btn btn-default-btn-lg" data-toggle="modal" data-target="#MyModal">请登录</button>
+				<div class="modal fade" id="MyModal">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+							</div>
+							<div class="modal-body">
+								<a href="login.html" class="btn btn-default">登录</a>
+								<a href="register.php" class="btn btn-default">注册</a>
+							</div>
+							<div class="modal-footer">
+								<button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+								<button class="btn btn-primary type="button"">Save</button> 	
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</h3>
+		</page-header>
+		<nav class="navbar navbar-inverse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="<?php echo URL_ROOT?>/blog_index.php">日志</a></li>
+				<li><a href="<?php echo URL_ROOT?>/about.php">关于</a></li>
+				<li><a href="<?php echo URL_ROOT?>/message.php">留言</a></li>
+			</ul>
+			<form action="" class="navbar-form navbar-right">
+				<div class="form-group"><input type="text" class="form-control"></div>
+				<div class="form-group"><input type="submit" value="搜索" class="form-control"></div>
+			</form>
+		</nav>
+	</div>
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-3">
+				<div class="well">
+					<ul class="nav nav-pills nav-stacked">
+						<li><a href="<?php echo URL_ROOT?>/admin/admin.php">博客管理</a></li>
+						<!-- 需要修改 -->
+						<!-- 到达博客管理页面时，进入博文列表，并多加入个发表文章 -->
+						<li><a href="<?php echo URL_ROOT?>/admin/admlist.php">用户管理</a></li>
+						<li><a href="<?php echo URL_ROOT?>/admin/admlist.php">博文管理</a></li>
+						<!-- 新加入的发表文章 -->
+						<!-- 
+							<li><a href="admart.php">发表文章</a></li>
+						 -->
+						<!-- 需要修改 -->
+						<li><a href="<?php echo URL_ROOT?>/cat_model/catlist.php">目录管理</a></li>
+						<li class="active"><a href="<?php echo URL_ROOT?>/cat_model/cat.php">添加栏目</a></li>
+						<!-- 需要修改 -->
+						<li><a href="">评论管理</a></li>
+						<!-- 需要修改 -->
+						<li><a href="<?php echo URL_ROOT?>/admin/admart.php">友情链接管理</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-xs-9">
+				<form action="" class="form-horizontal" method="post">
+					<div class="form-group">
+						<label for="" class="col-xs-2 control-label">栏目:</label>
+						<div class="col-xs-9">
+							<input type="text" name="catname" class="form-control">
+						</div>
+					</div>
+					
+					<div class="col-xs-9 col-xs-offset-2">
+						<button type="submit" class="btn btn-primary">提交</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="well text-center" id="footer">
+			欢迎使用Zblog
+		</div>
+	</div>
+	<script src="//libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>	
+	<script src="../js/bootstrap.min.js"></script>	
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- 路径相对于php文件 -->
+	<!--
+	[an error occurred while processing this directive]
+	-->
+	<!--#include virtual="./view/comm/title.html" -->
+	<!-- php包含不起效果，动态包含[其效果了注释掉最好] -->
+	<?php include($title_url);?>
+	<link rel="stylesheet" href="<?php echo $bootstrap;?>">
+	<!--[if lt IE 9]>
+        <script src="./js/html5shiv.min.js"></script>
+        <script src="./js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+		.container {
+			width: 1170px;
+		}
+		article {
+			margin-bottom: 30px;
+		}
+		article h1 {
+			font-size: 24px;
+			font-family: '微软雅黑','黑体',sans-serif;
+		}
+		.arc{
+			border-top: 1px dashed gray;
+			border-bottom: 1px solid gray;
+			padding-top: 6px;
+			margin-bottom: 4px;
+		}
+		.art_details{
+			margin:15px 0px;
+		}
+    </style>
+</head>
+<body>
+	<!-- 1.头部 -->
+	<?php include($header_url);?>
+	<!-- 2.主体 -->
+	<div class="container">
+		<div class="row">
+			<!-- SSI静态包含-list.php-文章列表 -->
+			<?php include($list_url);?>	
+			<!-- SSI静态包含-left.php-左侧栏 -->
+			<?php include($left_url);?>
+		</div>
+		<div class="well">测试www.chuanyuefanhua.com</div>
+	</div>
+	<!-- 3.底部 -->
+	
+	<script src="//libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>	
+	<script src="./js/bootstrap.min.js"></script>	
+	<script src="js/jquery.js"></script>
+ 	<!--<script src="js/bootstrap.min.js"></script>
+--></body>
+</html>

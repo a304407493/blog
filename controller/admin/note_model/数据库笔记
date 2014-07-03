@@ -1,0 +1,46 @@
+索引的类型
+	primary：
+		一张表中最多只有一个primary类型的索引，一般情况下每个表最好有一个primarykey的索引。
+		它有时会影响表的存储行为和写入行为。
+		(innodb中，数据按primary key存储)primary的数值不重复。
+	index：
+		普通索引，可重复；
+
+        create INDEX testindex ON table (column, ...)
+
+	unique：
+ 不
+		唯一的索引，可为NULL。会影响insert部分的写入。
+		
+		支持字段部分索引，varchar的前10个字节。
+
+
+        create UNIQUE testindex ON table (column, ...)
+
+	fulltext（MyIsam）：
+
+		全文索引，一般用在全文搜索时。一般在小项目中使用，
+
+		如果数据量增长到一定量的情况，不是很合适。另外，对中文的支持有限。
+
+
+	左前缀
+
+    	对于字符串的索引，可以指定字段的前N个字节有索引
+    	对于字符串的索引，可以使用：(... where somechar like "abc%")
+   		对于多列索引，同样存在顺序的规则。如：index (a, b)，那么实际会用到索引的条件是：where a = 123 和 where a= 123 and b = 345; 而：b=345不会使用索引。
+
+   	使用场景
+
+    	包含where的场景（select、update、delete）
+    	order by的字段，建议索引，B树有效
+    	group by的字段，建议给索引，B树有效
+    	左前缀可以做树的数据结构的查询，如多级分类统计等
+
+    判断一个查询是否使用索引&遍历的行数
+		可能很多人都知道explain，但是会用么？
+
+		    type：使用全表遍历（All）还是区间遍历（range）
+		    key：查询会使用到的索引
+		    key_len：索引长度
+		    rows：可能遍历的条数	

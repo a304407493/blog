@@ -1,0 +1,6 @@
+<!--#include virtual="/view/comm/header.html"--> 
+
+错误写法：
+	<!-- #include virtual="./comm/head.html" -->
+	错误1——<!--#
+	错误2——相对于php文件来说的路径

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<!--[if lt IE 9]>
+        <script src="./js/html5shiv.min.js"></script>
+        <script src="./js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+		.container {
+			width: 1170px;
+		}
+		article {
+			margin-bottom: 30px;
+		}
+		article h1 {
+			font-size: 24px;
+			font-family: '微软雅黑','黑体',sans-serif;
+		}
+		.arc{
+			border-top: 1px dashed gray;
+			border-bottom: 1px solid gray;
+			padding-top: 6px;
+			margin-bottom: 4px;
+		}
+		.art_details{
+			margin:15px 0px;
+		}
+		.comm{
+			margin-left: 25px;
+		}
+    </style>
+</head>
+<body>
+	<!-- 1.头部 -->
+	<!-- SSI静态包含 -->
+	<!--#include virtual="/view/comm/header.html"--> 
+	<!-- 2.主体 -->
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-9">
+				<!-- 文章 -->
+				<article>
+					<h1><?php echo $art['title'];?></h1>
+					<div class="arc">
+						<div class="art_details" >
+							发表时间：<?php echo date('Y/m/d',$art['pubtime']);?>  
+							&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+							分类：<?php echo $art['catname'];?> 
+							&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+							标签：<?php echo $art['tags'];?> 
+							&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+							作者：by <?php echo $art['nick'];?> &nbsp;&nbsp;&nbsp;
+						</div>
+						
+						<p><?php echo $art['content'];?></p>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<img src="./images/pic.png" alt="" class="img-rounded">张三发表于：<a href="">2014/04/23</a> 说：
+						</div>
+						<div class="panel-body">十八哥的文章就是好</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<img src="./images/pic.png" alt="" class="img-rounded">张三发表于：<a href="">2014/04/23</a> 说：
+						</div>
+						<div class="panel-body">十八哥的文章就是好</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<img src="./images/pic.png" alt="" class="img-rounded">张三发表于：<a href="">2014/04/23</a> 说：
+						</div>
+						<div class="panel-body">十八哥的文章就是好</div>
+					</div>
+				</article>
+				
+				<!-- 评论 -->
+				<div>
+					<div style="margin:10px 0px;">游客身份:</div>
+					<form class="comm" method="POST" >
+						<label>昵称(必填)</label><br/>
+							<input type="text" name="nick" id="nick"><br/>
+						<label>Mail(必填，不会被公开)</label><br/>
+							<input type="text" name="mail" id="mail"><br/>
+						<label>联系方式(选填)</label><br/>
+							<input type="text" name="mail" id="mail"><br/>
+						<label>评论</label><br/>
+							<textarea name="comm" id="comm" cols="75" rows="10"></textarea>	
+					</form>
+				</div>
+				
+				
+				
+
+			</div>
+			
+			
+
+
+
+			 
+			<!-- 此处不能使用静态包含不知道为何 -->
+			<!-- CGI动态包含 -->
+			<?php include_once('/view/comm/left.php');?>
+		</div>
+		<div class="well">版权信息www.chuanyuefanhua.com</div>
+	</div>
+	
+	<!-- 3.底部 -->
+	
+	<script src="//libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>	
+	<script src="./js/bootstrap.min.js"></script>	
+	<script src="js/jquery.js"></script>
+ 	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

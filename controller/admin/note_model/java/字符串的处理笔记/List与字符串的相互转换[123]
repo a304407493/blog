@@ -1,0 +1,17 @@
+List-->字符串：
+	List myList = new ArrayList();
+	myList.add("1");
+	myList.add("2");
+	myList.add("3");
+    myList.toString
+    结果为：
+    	[1,2,3]
+字符串-->List：
+	String demosub = demo.substring(1,demo.length()-1);
+		String demoArray[] = demosub.split(",");
+		List<String> demoList = Arrays.asList(demoArray);
+
+List-->数组：
+	
+数组-->List：
+		

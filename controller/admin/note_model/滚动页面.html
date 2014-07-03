@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<!--[if lt IE 9]>
+        <script src="./js/html5shiv.min.js"></script>
+        <script src="./js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+		.cont {
+			height: 1000px;
+		}
+		body {
+			padding-top: 50px;
+		}
+    </style>
+</head>
+<body data-spy="scroll" data-target=".container" data-offset="80">
+	<div class="container">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<ul class="nav navbar-nav">
+				<li><a href="#t1">首页</a></li>
+				<li><a href="#t2">作品</a></li>
+				<li><a href="#t3">关于</a></li>
+				<li><a href="#t4">联系</a></li>
+			</ul>
+		</nav>
+		<div class="cont">
+			<h1 id="t1">首页</h1>
+		</div>
+		<div class="cont">
+			<h1 id="t2">作品</h1>
+		</div>
+		<div class="cont">
+			<h1 id="t3">关于</h1>
+		</div>
+		<div class="cont">
+			<h1 id="t4">联系</h1>
+		</div>
+	</div>
+<!-- 页面滚动 -->
+	<pre>
+		滚动页面：
+			1.body标签添加：
+				data-spy="scroll" data-target=".container" data-offset="80"
+			2.
+				div.container>nav.navbar.nav-inverse.navbar-fixed-top>ul.nav.navbar-nav>li*4>a
+					首页、作品、关于、联系
+					a标签 #t1 #t2 #t3 #t4
+			3.
+				style
+					.cont {
+						height: 1000px;
+					}
+					body {
+						padding-top: 50px;
+					}
+			4.
+				div.container里面，nav标签后面
+					div.cont>h1#t1{首页}
+					div.cont>h1#t2{作品}
+					div.cont>h1#t3{关于}
+					div.cont>h1#t4{联系}
+	</pre>
+	
+	
+	<script src="js/jquery.js"></script>
+ 	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

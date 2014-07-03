@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>博文列表</title>
+	<link rel="stylesheet" href="<?php echo $bootstrap;?>">
+	<!--[if lt IE 9]>
+        <script src="./js/html5shiv.min.js"></script>
+        <script src="./js/respond.min.js"></script>
+    <![endif]-->
+<style>
+	.container {
+		width: 1170px;
+	}
+</style>
+</head>
+<body>
+	<!-- 1.头部 -->
+	<!-- 
+		failed to open stream: no suitable wrapper could be found in  
+		解决办法：
+
+			1.在PHP.ini中搜索关键字：allow_url_include 没有的自行建立。
+
+			2. 将 Off 改成 On ：
+
+			将allow_url_include  = off修改为 allow_url_include  = On
+	-->
+	<?php include($header_url);?>
+
+	<div class="container">
+		
+		<div class="row">
+			<div class="col-xs-3">
+				<div class="well">
+					<ul class="nav nav-pills nav-stacked">
+						<li><a href="<?php echo $adminIndex;?>">博客管理</a></li>
+						<!-- 需要修改 -->
+						<!-- 到达博客管理页面时，进入博文列表，并多加入个发表文章 -->
+						<li><a href="<?php echo ''?>">用户管理</a></li>
+						<li class="active"><a href="<?php echo $adminList;?>">博文管理</a></li>
+						<!-- 新加入的发表文章 -->
+						<li><a href="<?php echo $addArt;?>">发表文章</a></li>
+						<!-- 需要修改 -->
+						<li><a href="<?php echo $catList;?>">目录管理</a></li>
+						<!-- 需要修改 -->
+						<li><a href="">评论管理</a></li>
+						<!-- 需要修改 -->
+						<li><a href="<?php echo '';?>">友情链接管理</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-xs-9">
+				<table class="table table-hover table-condensed">
+					<tr>
+						<td>序号</td>
+						<td>日期</td>
+						<td>标题</td>
+						<td>分类</td>
+						<td>回复</td>
+						<td>操作</td>
+					</tr>
+					<?php foreach($arts as $a) { ?>
+					<tr>
+						<td>
+							<?php echo $a['artid']; ?>
+						</td>
+						<td>
+							<?php echo date('Y/m/d H:i',$a['pubtime']); ?>
+						</td>
+						<td><a href="admedit.php?artid=<?php echo $a['artid']; ?>">
+							<?php echo $a['title']; ?></a>
+						</td>
+						<td><?php echo $a['catname']; ?></td>
+						<td><span class="badge">0</span></td>
+						<td>
+							<a href="admartdel.php?artid=<?php echo $a['artid'];?>">删除</a>
+						</td>
+					</tr>
+					<?php } ?>
+				</table>
+				<ul class="pagination">
+					<li><a href="">1</a></li>
+					<li><a href="">2</a></li>
+					<li><a href="">3</a></li>
+					<li><a href="">4</a></li>
+					<li><a href="">5</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="well text-center" id="footer">
+			欢迎使用Zblog
+		</div>
+	</div>
+	<script src="//libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>	
+	<!--
+	<script src="<?php echo URL_ROOT;?>/js/bootstrap.min.js"></script>	
+	-->
+</body>
+</html>

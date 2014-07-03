@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<!--[if lt IE 9]>
+        <script src="./js/html5shiv.min.js"></script>
+        <script src="./js/respond.min.js"></script> 
+    <![endif]--> 
+    <style>
+    	/* 栅格系统背景 */
+		  .row div{
+		 			background: gray;
+		 			border: 1px solid black;
+		 		}  
+		.container {
+			width: 1170px;
+		}
+		/* 导航固定时空出导航的位置 */
+		body{
+			padding-top: 50px;
+			//padding: 50px 0;//上下各空出50px
+		}
+
+		/* article {
+			margin-bottom: 30px;
+		}
+		article h1 {
+			font-size: 24px;
+			font-family: '微软雅黑','黑体',sans-serif;
+		} */
+    </style>
+</head>
+<body>
+<!-- 导航 -->
+	<pre>
+		导航：
+			1.
+				div.navbar.navbar-inverse>ul.nav.navbar-nav>li*4>a>{导航$}
+			2.
+				li添加class+"active"
+	</pre>
+
+		<div class="navbar navbar-inverse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="">导航1</a></li>
+				<li><a href="">导航2</a></li>
+				<li><a href="">导航3</a></li>
+				<li><a href="">导航4</a></li>
+			</ul>
+		</div>
+<!-- 栅格系统 -->
+	<pre>
+		栅格系统：
+			1.
+				div.container>div.row>div.col-lg-1*2
+			2.
+				col-lg-1分别填写left和right
+				修改第二个为col-lg-11
+			3.
+				col-lg-:1170
+				col-md-:970
+				col-sm-:750
+				col-xs-:None
+				lg 覆盖md,md 覆盖xs,即”大类”的优先级高
+	</pre>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-1">left</div>
+				<div class="col-lg-11">right</div>
+			</div>
+		</div>
+<!-- 栅格系统-偏移 -->
+	<pre>
+		栅格系统-偏移：
+			1.
+				div.container>div.row>div.col-lg-4*2
+			2.
+				col-lg-1分别填写占位4个和空出4个
+				修改第二个为添加一个class col-lg-offset-4
+			3.
+				col-lg-:1170
+				col-md-:970
+				col-sm-:750
+				col-xs-:None
+				lg 覆盖md,md 覆盖xs,即”大类”的优先级高
+	</pre>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 ">占位4个</div>
+				<div class="col-lg-4 col-lg-offset-4">空出4个/偏移</div>
+			</div>
+		</div>
+<!-- 栅格系统-嵌套 -->
+	<pre>
+		栅格系统-嵌套：
+			1.
+				div.container>div.row>div.col-lg-9
+				填写：col-lg-9
+			2.
+				div.row>div.col-lg-3*2>{inner col-3}
+					将第二个class更改为：col-lg-9
+					将第二个文本更改为：inner col-9
+	</pre>	
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-9">
+					<div class="row">
+						<div class="col-lg-3">inner col-3</div>
+						<div class="col-lg-9">inner col-9</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- 栅格系统-压缩与拉长 -->
+	<pre>
+		栅格系统-压缩与拉长：
+			1.
+				div.container>div.row
+			2.
+				div.col-lg-8*2>{原始8}
+					将第二个class更改为：col-lg-4
+					将第二个文本更改为：原始4
+			3.
+				div.col-lg-8.col-lg-push-4*2>{压缩到4}
+					将第二个class更改为：col-lg-4 col-lg-pull-8
+					将第二个文本更改为：拉长到8
+	</pre>	
+<!-- 标题 -->	
+	<pre>
+		标题：
+			主标题+后跟副标题
+				div.page-header>h1{燕十八 二手诗人 科学家}>small{乘风行 无惧}
+			主标题+下跟副标题
+				div.page-header>h1{燕十八 二手诗人 科学家}+h3{乘风行 无惧}
+	</pre>	
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">原始8</div>
+				<div class="col-lg-4">原始4</div>
+				<div class="col-lg-8 col-lg-push-4">压缩4个</div>
+				<div class="col-lg-4 col-lg-pull-8">拉长4个</div>
+			</div>
+		</div>
+		<div class="page-header">
+			<h1>燕十八 二手诗人 科学家<small>乘风行 无惧</small></h1>
+		</div>
+<!-- 导航 -->	
+	<pre>
+		导航：
+			1.添加导航
+				//div.navbar.navbar-inverse>ul.nav.navbar-nav>li*4>a>{导航$}
+				nav.navbar.navbar-default>ul.nav.navbar-nav>li*4>a{导航$}
+			2.导航添加输入框
+				form.navbar-form.navbar-right>div.form-group>input.form-control
+				div.form-group>input.form-control
+					type更换为submit
+					添加value为查询
+				p.navbar-text{我是导航的文字}>a{查看协议}
+			4.导航添加按钮：
+				buttom.bt.btn-default.navbar-btn>{注册}
+	</pre>	
+		<nav class="navbar navbar-default">
+			<ul class="nav navbar-nav">
+				<li><a href="">导航1</a></li>
+				<li class="active"><a href="">导航2</a></li>
+				<li><a href="">导航3</a></li>
+				<li><a href="">导航4</a></li>
+			</ul>
+			<form action="" class="navbar-form navbar-right">
+				<div class="form-group"><input type="text" class="form-control"></div>
+				<div class="form-group">
+					<input type="submit" class="form-control" value="查询">
+				</div>
+			</form>
+			<p class="navbar-text">我是导航的文字<a href="">查看协议</a></p>
+			<buttom class="bt btn-default navbar-btn">注册</buttom>
+		</nav>
+
+		<nav class="navbar navbar-default">
+			<ul class="nav navbar-nav">
+				<li><a href="">导航1</a></li>
+				<li class="active"><a href="">导航2</a></li>
+				<li><a href="">导航3</a></li>
+				<li><a href="">导航4</a></li>
+			</ul>
+			<p class="navbar-text">我是导航中的文字<a href="">查看协议</a></p>
+			<button class="btn btn-default navbar-btn">注册</button>
+		</nav>
+<!-- 固定导航 -->	
+	<pre>
+		固定导航：
+			1.导航固定在顶部
+				1.1
+					nav.navbar.navbar-default.navbar-fixed-top>ul.nav.navbar-nav>li*4>a{导航$}
+				1.2
+					第二个li添加active
+				1.3
+					body{padding-top:50px;}
+			2.导航固定在底部
+				nav.navbar.navbar-default.navbar-fixed-buttom>ul.nav.navbar-nav>li*4>a{导航$}
+	</pre>	
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<ul class="nav navbar-nav">
+				<li><a href="">导航1</a></li>
+				<li class="active"><a href="">导航2</a></li>
+				<li><a href="">导航3</a></li>
+				<li><a href="">导航4</a></li>
+			</ul>
+		</nav>
+
+<!-- 面板 -->	
+	<pre>
+		面板：
+			1.
+				div.col-lg-4>div.panel.panel-default>div.panel-heading{最新博文}+div.panel-body>ul>li*4>a{最新博文$}
+			2.
+				div.col-lg-4>div.panel.panel-default>div.panel-body>ul>li*4>a{最新博文$}
+					在panel.panel-default的div下面添加div.panel-footer{脚注}
+	</pre>			
+		<div class="col-lg-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">最新博文</div>
+				<div class="panel-body">
+					<ul>
+						<li><a href="">最新博文1</a></li>
+						<li><a href="">最新博文2</a></li>
+						<li><a href="">最新博文3</a></li>
+						<li><a href="">最新博文4</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-4">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<ul>
+						<li><a href="">最新博文1</a></li>
+						<li><a href="">最新博文2</a></li>
+						<li><a href="">最新博文3</a></li>
+						<li><a href="">最新博文4</a></li>
+					</ul>
+				</div>
+				<div class="panel-footer">脚注</div>
+			</div>
+		</div>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+<!-- 分页 -->	
+	<pre>
+		分页：
+			1.
+				ul.pagination>li*4>a{$}
+			2.
+				ctrl+shift+D复制第一行和最后一行
+				
+				&laquo;
+				&raquo;
+	</pre>	
+		<ul class="pagination">
+			<li><a href="">&laquo;</a></li>
+			<li><a href="">1</a></li>
+			<li><a href="">2</a></li>
+			<li><a href="">3</a></li>
+			<li><a href="">4</a></li>
+			<li><a href="">&raquo;</a></li>
+		</ul>
+<!-- 选项卡切换和气泡 -->	
+	<pre>
+		选项卡切换和气泡：
+			1.
+				ul.nav.nav-tabs>li*3>a{导航$}
+					li加上active
+			2.
+				table.table>tr*3>td*3
+					文章标题、发布日期、回复
+					人生三乐、2014年4月19日
+			3.
+				回复数添加气泡：
+					span.badge
+	</pre>	
+		<ul class="nav nav-tabs">
+			<li><a href="">导航1</a></li>
+			<li class="active"><a href="">导航2</a></li>
+			<li><a href="">导航3</a></li>
+		</ul>
+		<table class="table">
+			<tr>
+				<td>文章标题</td>
+				<td>发布日期</td>
+				<td>回复</td>
+			</tr>
+			<tr>
+				<td>人生三乐</td>
+				<td>2014年4月19日</td>
+				<td><span class="badge">3</span></td>
+			</tr>
+			<tr>
+				<td>人生三乐</td>
+				<td>2014年4月19日</td>
+				<td><span class="badge">3</span></td>
+			</tr>
+			<tr>
+				<td>人生三乐</td>
+				<td>2014年4月19日</td>
+				<td><span class="badge">3</span></td>
+			</tr>
+		</table>
+<!-- 警告信息 -->
+	<pre>
+		警告信息：
+			文字警告信息：
+				p.text-muted
+					浅色调忽略我：灰色
+				p.text-primary
+					主要信息，请认真阅读：蓝色
+				p.text-success
+					祝贺你成功了：深绿色
+				p.text-info
+					帐号信息，关键信息-info级别：深灰色
+				p.text-warning
+					警告，不要乱动：褐色
+				p.text-danger
+					危险，你已经被国安盯上：红色
+		按钮警告信息：
+			div.row>div.col-lg-6.col-lg-offset-2
+				button.btn.btn-default
+					点我：白色
+				button.btn.btn-success
+					成功：灰色
+				button.btn.btn-primary
+					主要：蓝色
+				button.btn.btn-warning
+					警告：黄色
+				button.btn.btn-danger
+					危险：红色
+				button.btn.btn-danger.btn-lg
+					危险：大个红色
+				button.btn.btn-danger.disabled
+					危险：不可以点击红色
+				<a href="" class="btn btn-danger">点我的人有危险：标签模拟按钮</a>
+	</pre>
+		<p class="text-muted">浅色调忽略我：灰色</p>
+		<p class="text-primary">主要信息，请认真阅读：蓝色</p>
+		<p class="text-success">祝贺你成功了：深绿色</p>
+		<p class="text-info">帐号信息，关键信息-info级别：深灰色</p>
+		<p class="text-warning">警告，不要乱动：褐色</p>
+		<p class="text-danger">危险，你已经被国安盯上：红色</p>
+
+		<div class="row">
+			
+		</div>
+		<div class="col-lg-6 col-lg-offset-2">
+			<button class="btn btn-default">点我：白色</button>
+			<button class="btn btn-successs">成功：灰色</button>
+			<button class="btn btn-primary">主要：蓝色	</button>
+			<button class="btn btn-warning">警告：黄色</button>
+			<button class="btn btn-danger">危险：红色</button>
+			<button class="btn btn-danger btn-lg">危险：大个红色</button>
+			<button class="btn btn-danger disabled">危险：不可以点击红色</button>
+
+			<a href="" class="btn btn-danger">点我的人有危险：标签模拟按钮</a>
+		</div>
+
+<!-- 联系方式 -->
+	<pre>
+		联系方式：
+			<address>
+				<strong>联系方式</strong> <br>
+				QQ:12431254 <br>
+				<abbr title="手机号">18213685214</abbr>
+			</address>
+	</pre>
+		<address>
+			<strong>联系方式</strong> <br>
+			QQ:12431254 <br>
+			<abbr title="手机号">18213685214</abbr>
+		</address>
+<!-- 引用 -->
+	<pre>
+		引用：
+			1.
+				blockquote>p{成功是99%的汗水加1%的天赋}
+			2.
+				·blockquote>p{键盘敲烂,月薪一万}>small{十八哥}
+			3.
+				靠右的引用
+				blockquote.pull-right>p{你若安好,便是晴天霹雳}>small{网络}
+	</pre>
+		<blockquote>
+			<p>成功是99%的汗水加1%的天赋</p>
+		</blockquote>
+		<blockquote>
+			<p>键盘敲烂,月薪一万<small>十八哥</small></p>
+		</blockquote>
+		<blockquote class="pull-right">
+			<p>你若安好,便是晴天霹雳<small>网络</small></p>
+		</blockquote>
+
+<!-- 代码块 -->
+	<pre>
+		代码块：
+			1.
+				p{人生就像递归函数，死亡时，}>code{return true;}
+			2.
+				向滑动条：
+					2.1
+						pre.pre-scrollable{}
+					
+					2.2	
+						(function(){
+							var $num = 0;
+							return function() {
+								return ++$num;
+							}
+						}
+						})()();
+						(function(){
+							var $num = 0;
+							return function() {
+								return ++$num;
+							}
+						}
+						})()();
+						(function(){
+							var $num = 0;
+							return function() {
+								return ++$num;
+							}
+						}
+						})()();
+	</pre>
+		<p>人生就像递归函数，死亡时，<code>return true;</code></p>
+		<pre class="pre-scrollable">
+			(function(){
+					var $num = 0;
+					return function() {
+						return ++$num;
+					}
+				}
+				})()();
+				(function(){
+					var $num = 0;
+					return function() {
+						return ++$num;
+					}
+				}
+				})()();
+				(function(){
+					var $num = 0;
+					return function() {
+						return ++$num;
+					}
+				}
+				})()();
+		</pre>	
+<!-- table -->
+	<pre>
+		table：
+			//1.最后没有边框
+				table.table>tr*4>td*3
+			//2.第一行和第三行，添加背景
+				table.table.table-striped>tr*4>td*3
+			//3.添加边框
+				table.table.table-bordered>tr*4>td*3
+			//4.你懂的
+				table.table.table-hover>tr*4>td*3
+			//5.没有搞明白
+				table.table.table-condensed>tr*4>td*3
+				table.table.table-condensed>tr*4>td*3
+					tr.danger
+	</pre>
+		<table class="table table-bordered table-hover table-striped">
+					<tr>
+						<td>姓名</td>
+						<td>排行</td>
+						<td>武器</td>
+					</tr>
+					<tr>
+						<td>刘备</td>
+						<td>老大</td>
+						<td>双剑</td>
+					</tr>
+					<tr>
+						<td>关羽</td>
+						<td>老两</td>
+						<td>青龙偃月刀</td>
+					</tr>
+					<tr>
+						<td>张飞</td>
+						<td>老三</td>
+						<td>矛</td>
+					</tr>
+				</table>	
+<!-- table -->
+	<pre>
+		输入框：
+			1.
+				//label和form-ctrol的form写错了
+				div.container>div.row>div.col-lg-4>form>div.form-group>label{用户名}+input.form-control
+					空出一些：div.row下面的div.col-lg-offset-2
+					name="username" placeholder="用户名"
+			
+			2.
+				与上一个输入框的不同点：
+					form.form-horizontal
+					input用div包裹
+
+				div.container下面：
+					2.1
+						div.row>div.col-lg-4.col-lg-offset-2>form.form-horizontal>div.form-group>label.col-xs-3.control-lable{用户名}+div.col-xs-9>input.form-control
+						name="username" placeholder="用户名"
+					2.2
+						在form.formhorizontal下面添加
+						<div class="form-group">
+							<label class="col-xs-3 control-label">Email:</label>
+							<div class="col-xs-9">
+								<input type="text" class="form-control" name="email" placeholder="email" />
+							</div>
+						</div>
+	</pre>
+				<div class="container">
+						<div class="row">
+							<div class="col-lg-4">
+								<form action="">
+									<div class="form-group">
+										<label>用户名</label>
+										<input type="text" class="form-control" name="username" placeholder="用户名">
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-4 col-lg-offset-2">
+								<form action="" class="form-horizontal">
+									<div class="form-group">
+										<label for="" class="col-xs-3 control-lable">用户名</label>
+										<div class="col-xs-9"><input type="text" class="form-control" name="username" placeholder="用户名"></div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-xs-3 control-label">Email:</label>
+										<div class="col-xs-9">
+											<input type="text" class="form-control" name="email" placeholder="email" />
+										</div>
+									</div>
+								</form>
+							</div>
+
+						</div>
+				</div>	
+<!-- 关闭按钮和下拉按钮 -->
+	<pre>
+		关闭按钮和下拉按钮：
+			1.
+				button.close
+				aria-hidden="true"
+				&times;
+			2.
+				span.caret
+	</pre>
+			<button class="close" aria-hidden="true">&times;</button>
+			<span class="caret"></span>
+			<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>	
+<!-- 模态框 -->
+	<pre>
+		模态框：
+			0.
+				触发按钮：
+					button.btn.btn-default-btn-lg
+						data-toggle="modal" data-target="#MyModal"
+						弹出
+			1.
+				div.modal.fade#MyModal>div.modal-dialog>div.modal-content>(div.modal-header+div.modal-body+div.modal-footer)
+				我是头部 我是主体 我是底部
+			2.
+				关闭按钮：
+					头部添加(div.modal-header)
+						button.close
+							type="button" data-dismiss="modal" aria-hidden="true" &times;
+			3.
+				底部添加——关闭和保存：
+					button.btn.btn-default
+						type="button" data-dismiss="modal" Close
+					button.btn.btn-primary 
+						type="button" Save
+	</pre>
+			<button class="btn btn-default-btn-lg" data-toggle="modal" data-target="#MyModal">弹出</button>
+			<div class="modal fade" id="MyModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							我是头部
+							<button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+						</div>
+						<div class="modal-body">我是主体</div>
+						<div class="modal-footer">
+							我是底部
+							<button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+							<button class="btn btn-primary" type="button">Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+
+				
+			div.container>div.row>div.col-lg-12>div.carousel.slide#MyCarousel
+				data-ride="carousel"
+				ol.carousel-indicators>li*3
+					data-target="#MyCarousel" class="acitve" data-slide-to="0"
+					data-target="#MyCarousel" data-slide-to="1"
+					data-target="#MyCarousel" data-slide-to="2"
+				ol下面：
+					div.carousel-inner>div.item*3
+					  <img src="./images/juhua.jpg" alt="菊花">
+					  <div class="carousel-caption">
+					    <h3>菊花</h3>
+					    <p>鲜嫩无比</p>
+					  </div>
+					a.left.carousel-control>span.glyphicon.glyphicon-chevron-left
+						href="#MyCarousel" data-slide="prev"
+					a.right.carousel-control>span.glyphicon.glyphicon-chevron-right
+						href="#MyCarousel" data-slide="next"
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="carousel slide" id="MyCarousel" data-ride="carousel">
+							<ol class="carousel-indicators">
+								<li data-target="#MyCarousel" class="acitve" data-slide-to="0"></li>
+								<li data-target="#MyCarousel" data-slide-to="1"></li>
+								<li data-target="#MyCarousel" data-slide-to="2"></li>
+							</ol>
+							<div class="carousel-inner">
+								<div class="item active">
+									<img src="./images/juhua.jpg" alt="菊花">
+									  <div class="carousel-caption">
+									    <h3>菊花</h3>
+									    <p>鲜嫩无比</p>
+									  </div>
+								</div>
+								<div class="item">
+									<img src="./images/Desert.jpg" alt="沙漠">
+									  <div class="carousel-caption">
+									    <h3>沙漠</h3>
+									    <p>撒哈拉沙漠</p>
+									  </div>
+								</div>
+								<div class="item">
+									<img src="./images/Koala.jpg" alt="koala">
+									  <div class="carousel-caption">
+									    <h3>考拉s</h3>
+									    <p>澳洲国宝</p>
+									  </div>
+								</div>
+							</div>
+							<a href="#MyCarousel" data-slide="prev" class="left carousel-control">
+								<span class="glyphicon glyphicon-chevron-left" ></span>
+							</a>
+							<a href="#MyCarousel" data-slide="next" class="right carousel-control">
+								<span class="glyphicon glyphicon-chevron-right" ></span>
+							</a>
+
+
+						</div>
+					</div>
+				</div>
+			</div> 
+			
+			
+			
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		
+<!-- Blog -->	
+	<pre>
+		Blog：
+			略
+	</pre>	
+		<div class="container">
+			<page-header>
+				<h1>燕十八 二手诗人 科学家</h1>
+				<h3>乘风行 无惧</h3>
+			</page-header>
+			<nav class="navbar navbar-inverse">
+				<ul class="nav navbar-nav">
+					<li><a href="">日志</a></li>
+					<li class="active"><a href="">心情</a></li>
+					<li><a href="">关于</a></li>
+					<li><a href="">留言</a></li>
+					<li><a href="">sublime参考</a></li>
+				</ul>
+				<form action="" class="navbar-form navbar-right">
+					<div class="form-group"><input type="text" class="form-control"></div>
+					<div class="form-group"><input type="submit" value="查询" class="form-control"></div>
+				</form>
+				
+
+			</nav>
+
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-9">
+					<article>
+						<h1><a href="#">我是文章标题</a></h1>
+						<div class="art">
+							<p>人每天都在进行编程工作,编程对于人来说是很自然的. <br>
+	你完全有能力在3个小时内学会编程. <br>
+	</p>
+	<p>
+	也有必要闪电般的学会编程,以确认你是否喜欢这一行,并降低学习.
+	本文中的实验者–一个0基础的天津保安,
+	在上火车前的3小时,学会PHP留言本开发.</p>
+						</div>
+						<span class="pull-right"><a href="#">3条评论&raquo;</a></span>
+					</article>
+
+
+					<article>
+						<h1><a href="">我是文章标题</a></h1>
+
+						<div class="arc">
+							<p>人每天都在进行编程工作,编程对于人来说是很自然的. <br/>
+							你完全有能力在3个小时内学会编程. <br>
+							</p>
+							<p>
+							也有必要闪电般的学会编程,以确认你是否喜欢这一行,并降低学习.
+							本文中的实验者–一个0基础的天津保安,
+							在上火车前的3小时,学会PHP留言本开发.
+							</p>
+						</div>
+					</article>
+					
+				</div>
+				<div class="col-xs-3">
+					<div class="panel panel-default">
+						<div class="panel-heading">最新博文</div>
+						<div class="panel-body">
+							<ul>
+								<li><a href="">最新博文1</a></li>
+								<li><a href="">最新博文2</a></li>
+								<li><a href="">最新博文3</a></li>
+								<li><a href="">最新博文4</a></li>
+							</ul>
+						</div>
+					</div>
+				
+					<div class="panel panel-default">
+						<div class="panel-heading">日志分类</div>
+						<div class="panel-body">
+							<ul>
+								<li><a href="">心情</a></li>
+								<li><a href="">技术</a></li>
+								<li><a href="">人生</a></li>
+								<li><a href="">哲学</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="well">我是底部信息 版权信息www.yanshiba.com</div>			
+		</div>
+
+
+		
+		
+
+	<script src="//libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>	
+	<script src="./js/bootstrap.min.js"></script>	
+	<script src="js/jquery.js"></script>
+ 	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

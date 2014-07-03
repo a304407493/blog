@@ -1,0 +1,44 @@
+<head>
+	<!-- <base href="http://blog.com/" /> -->
+	<!-- <base target="_blank" /> -->
+</head>
+<!-- 1.头部 -->
+	<div class="container">
+		<page-header>
+			<!-- 二手诗人 科学家  -->
+			<h1>穿越繁华 <small>人生为棋，我愿为卒，行动虽缓，不曾后退一步。。。</small></h1>
+			<h3>
+				乘风行 无惧
+				<button style="font-size:15px;float:right;" class="btn btn-default-btn-lg" data-toggle="modal" data-target="#MyModal">请登录</button>
+				<div class="modal fade" id="MyModal">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+							</div>
+							<div class="modal-body">
+								<a href="login.php" class="btn btn-default">登录</a>
+								<a href="register.php" class="btn btn-default">注册</a>
+							</div>
+							<div class="modal-footer">
+								<button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+								<button class="btn btn-primary type="button"">Save</button> 	
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</h3>
+		</page-header>
+		<nav class="navbar navbar-inverse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="blog_index.php">日志</a></li>
+				<li><a href="blog_art.php?artid=0">关于</a></li>
+				<li><a href="message.php">留言</a></li>
+			</ul>
+			<form action="" class="navbar-form navbar-right">
+				<div class="form-group"><input type="text" class="form-control"></div>
+				<div class="form-group"><input type="submit" value="搜索" class="form-control"></div>
+			</form>
+		</nav>
+	</div>

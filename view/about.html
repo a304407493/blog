@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<!--[if lt IE 9]>
+        <script src="./js/html5shiv.min.js"></script>
+        <script src="./js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+		.container {
+			width: 1170px;
+		}
+		article {
+			margin-bottom: 30px;
+		}
+		article h1 {
+			font-size: 24px;
+			font-family: '微软雅黑','黑体',sans-serif;
+		}
+		.arc{
+			border-top: 1px dashed gray;
+			border-bottom: 1px solid gray;
+			padding-top: 6px;
+			margin-bottom: 4px;
+		}
+		.art_details{
+			margin:15px 0px;
+		}
+		.comm{
+			margin-left: 25px;
+		}
+    </style>
+</head>
+<body>
+	<!-- 1.头部 -->
+	<!-- SSI静态包含 -->
+	<?php include('/view/comm/header.php');?>
+	<!-- 2.主体 -->
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-9">
+				<!-- 文章 -->
+				<article>
+					<h1><?php echo $art['title'];?></h1>
+					<div class="arc">
+						<div class="art_details" >
+							<?php if($art['pubtime']){?>
+								发表时间：
+								<a href="#"><?php echo date('Y/m/d',$art['pubtime']);?></a>   
+							<?php }?>
+
+							<?php if($art['catname']){?>
+								&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+								分类：
+								<a href="#"><?php echo $art['catname'];?> </a> 
+							<?php }?>
+
+							
+							<?php if($art['tags']){?>
+								&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+								标签：
+								<?php 
+									$art_tags = explode(",", $art['tags']);
+									foreach ($art_tags as $art_tag) {
+								?>
+									<a href="#"><?php echo $art_tag;?> </a>
+								<?php
+									}
+								?>
+							<?php }?>
+
+							<?php if($art['nick']){?>
+								&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+								作者：by 
+								<a href="#"><?php echo $art['nick'];?></a> &nbsp;&nbsp;&nbsp;
+							<?php }?>
+						</div>
+						
+						<p><?php echo $art['content'];?></p>
+					</div>
+
+					<!-- 评论 -->
+					<div id="comms" target="comms">
+						<?php foreach ($comms as $comm ) {
+						?>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									IP:
+										<a href="">
+											<?php echo long2ip($comm['ip']);?>
+										</a>
+										&nbsp;&nbsp;&nbsp;
+									<img src="./images/pic.png" alt="" class="img-rounded">
+										<?php echo $comm['nick'];?>
+										&nbsp;&nbsp;&nbsp;
+									发表于：
+										<a href="">
+											<?php echo date('Y/m/d',$comm['pubtime']);?>
+										</a> 
+									说：
+								</div>
+								<div class="panel-body"><?php echo $comm['content'];?></div>
+							</div>
+						<?php
+							}
+						?>
+					</div>
+				</article>
+				
+				<!-- 评论 -->
+				<div>
+					<div style="margin:10px 0px;">游客身份:</div>
+					<form class="form-horizontal" method="post">
+						
+						<div class="form-group">
+							<label class="col-xs-3 control-label" for="">名称:</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" name="nick" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-3 control-label" for="">评论内容:</label>
+							<div class="col-xs-6">
+								<textarea name="content" ></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-3 control-label" for="">验证码:</label>
+							<div class="col-xs-3">
+								<input type="text" class="form-control" name="vercode" >
+							</div>
+							<div class="col-xs-3"><img id="vercode" src="vercode.php" onclick="changecode()" /></div>
+						</div>
+						<div class="form-group">
+							<div class="col-xs-6 col-xs-offset-3">
+								<button class="btn btn-default" onclick="return comm();return false;">提交评论</button>
+								
+							</div>
+						</div>
+					</form>
+				</div>
+				
+				
+				
+
+			</div>
+			
+			
+
+
+
+			 
+			<!-- 此处不能使用静态包含不知道为何 -->
+			<!-- CGI动态包含 -->
+			<?php include_once('/view/comm/left.php');?>
+		</div>
+		<div class="well">版权信息www.chuanyuefanhua.com</div>
+	</div>
+	
+	<!-- 3.底部 -->
+	<script>
+		//函数1、刷新验证码：时间戳
+		function changecode() {
+			document.getElementById('vercode').src = 'vercode.php?_s='+Math.random();
+		}
+		//函数2、js日期格式工具
+		Date.prototype.format = function(format){
+			/************************************监测年****************************************/
+			//1.监测-年
+			//监测是否有(y、yy、yyy、yyyy)——年(符合条件的y、yy、yyy、yyyy)
+			var reg = /(y+)/;
+
+			//2.监测-年-(监测format的y、yy、yyy、yyyy)
+			//监测是否有(y、yy、yyy、yyyy)——年(符合条件的y、yy、yyy、yyyy)
+		 	if(reg.test(format)){
+		 		//substr(start[,length])——start要截取的起始值，如果没有输入长度/length——截取到末位
+		 		//将format的第一个(yyyy/yyy/yy/y)用shit.getFullYear()来代替
+		 		//长度减去format中匹配的(yyyy/yyy/yy/y)的实际长度得到下标
+	 			format =	format.replace(
+		 			   				RegExp.$1,
+		 			   				(this.getFullYear()+"").substr(4 - RegExp.$1.length)//???
+		 			   			  );
+		 	}
+		 	/**********************************监测年之外**************************************/
+		 	//1.监测工具数组——月日、时分秒
+			var o = {
+				 "M+" : this.getMonth()+1, //month
+				 "d+" : this.getDate(),    //day
+				 "h+" : this.getHours(),   //hour
+				 "m+" : this.getMinutes(), //minute
+				 "s+" : this.getSeconds(), //second
+				 "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
+				 "S" : this.getMilliseconds() //millisecond
+			}
+		 	//2.监测-M(月) d(日) hms(时分秒) qS(????)
+	 		for(var k in o){
+	 			//var regOther = "("+ k +")";//和下面的区别在哪里——alert之后有/——类似var reg = /(y+)/;
+	 			var regOther = new RegExp("(" + k + ")");
+	 			
+	 			if(regOther.test(format)){
+	 				format = 	format.replace(
+			 								RegExp.$1,
+			 								RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length)
+			 								);
+	 			}
+	 			//alert(regOther+","+format);//测试
+	 			
+	 		}
+	 		//返回
+		 	return format;
+		}
+			
+		//函数3、ajax-提交评论
+		function comm() {
+			//	1.ajax对象——用于发送请求(js的一个对象, XMLHttpRequest对象,他有发关HTTP请求的能力)
+			var xhr = new XMLHttpRequest();
+
+			//	2.ajax要发送的内容
+			var html = '<div class="panel panel-default"> \
+					<div class="panel-heading">\
+						<img src="./images/pic.png" class="img-rounded" alt="">{nick}发表于<a href="#">{time}</a>说:\
+					</div>\
+					<div class="panel-body">\
+						{content}					</div>\
+				</div>';
+			// 把评论名称和内容找到,供POST使用
+				var nick = document.getElementsByName('nick')[0].value;
+				var content = document.getElementsByName('content')[0].value;
+				var vercode = document.getElementsByName('vercode')[0].value;
+			var str = 'nick=' + nick + '&content=' + content + '&vercode=' + vercode + '&agent=ajax';
+
+			
+			//	3.要发送的地址
+			xhr.open('POST' , 'blog_art.php?artid=<?php echo $artid;?>' , true);
+			xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+
+			
+			xhr.onreadystatechange = function() {
+				if(xhr.readyState == 4 && xhr.status == 200) {
+					if(xhr.responseText == 'succ') {
+						html = html.replace('{nick}' , nick);
+						html = html.replace('{content}' , content);
+						var pubtime = new Date();
+						pubtime = pubtime.format('yyyy-MM-dd');//pubtime = pubtime.format('yyyy年MM月dd日');
+						html = html.replace('{time}' ,pubtime);
+						// 还应该把{time}替换为当前的格式化时间,用Date对象做
+						document.getElementById('comms').innerHTML += html;
+						document.getElementsByName('nick')[0].value = '';
+						document.getElementsByName('content')[0].value = '';
+						document.getElementsByName('vercode')[0].value = '';
+					} else {
+						alert('fail');
+					}
+				}
+			}
+
+			xhr.send(str);
+
+			return false;
+		}
+	</script>
+	<script src="//libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>	
+	<script src="./js/bootstrap.min.js"></script>	
+	<script src="js/jquery.js"></script>
+ 	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
